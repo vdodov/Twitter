@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Firebase
 
 class RegistrationController: UIViewController {
   
   // MARK: - Properties
   
   private let imagePicker = UIImagePickerController()
+  private var profileImage: UIImage?
   
   private let plusPhotoButton: UIButton = {
     let button = UIButton(type: .system)
@@ -71,7 +73,7 @@ class RegistrationController: UIViewController {
     button.heightAnchor.constraint(equalToConstant: 50).isActive = true
     button.layer.cornerRadius = 5
     button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-    button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
+    button.addTarget(self, action: #selector(handleRegisteration), for: .touchUpInside)
     return button
   }()
   
@@ -95,8 +97,29 @@ class RegistrationController: UIViewController {
     present(imagePicker, animated: true)
   }
   
-  @objc func handleSignUp() {
+  @objc func handleRegisteration() {
+    guard let profileImage = profileImage else {
+      print("DEBUG: Please select a profile image..")
+      return
+    }
+    guard let email = emailTextField.text else { return }
+    guard let password = passwordTextField.text else { return }
+    guard let fullname = fullnameTextField.text else { return }
+    guard let username = usernameTextField.text else { return }
     
+    let credentials = AuthCredentials(email: email,
+                                      password: password,
+                                      fullname: fullname,
+                                      username: username,
+                                      profileImage: profileImage)
+    
+    AuthService.shared.registerUser(credentials: credentials) { (error, ref) in
+      guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
+      guard let tab = window.rootViewController as? MainTabController else { return }
+      tab.authenticateUserAndConfigureUI()
+      
+      self.dismiss(animated: true, completion: nil)
+    }
   }
   
   @objc func handleShowLogin() {
@@ -136,6 +159,7 @@ extension RegistrationController: UIImagePickerControllerDelegate, UINavigationC
   
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     guard let profileImage = info[.editedImage] as? UIImage else { return }
+    self.profileImage = profileImage
     
     plusPhotoButton.layer.cornerRadius = 128 / 2
     plusPhotoButton.layer.masksToBounds = true
