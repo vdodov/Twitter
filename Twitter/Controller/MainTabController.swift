@@ -12,6 +12,14 @@ import Firebase
 class MainTabController: UITabBarController {
   
   // MARK: - Properties
+  var user: User? {
+    didSet {
+      guard let nav = viewControllers?[0] as? UINavigationController else { return }
+      guard let feed = nav.viewControllers.first as? FeedController else { return }
+      
+      feed.user = user
+    }
+  }
   
   let actionButton: UIButton = {
     let button = UIButton(type: .system)
@@ -34,6 +42,12 @@ class MainTabController: UITabBarController {
   
   // MARK: - API
   
+  func fetchUser() {
+    UserService.shared.fetchUser { user in
+      self.user = user
+    }
+  }
+  
   func authenticateUserAndConfigureUI() {
     if Auth.auth().currentUser?.uid == nil {
       DispatchQueue.main.async {
@@ -42,9 +56,9 @@ class MainTabController: UITabBarController {
         self.present(nav, animated: true)
       }
     } else {
-      print("DEBUG: User is logged in..")
       configureViewControllers()
       configureUI()
+      fetchUser()
     }
     
   }

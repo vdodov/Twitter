@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5DAE71FF3FBC1C22C8CB8292 /* Pods_Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481F0688BB8B424BD28E2116 /* Pods_Twitter.framework */; };
+		E60621082478D43D00854C53 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60621072478D43D00854C53 /* UserService.swift */; };
+		E606210A2478D72F00854C53 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60621092478D72F00854C53 /* User.swift */; };
 		E656C06424739D6400E66F59 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E656C06324739D6400E66F59 /* LoginController.swift */; };
 		E656C0682473F95300E66F59 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E656C0672473F95300E66F59 /* RegistrationController.swift */; };
 		E656C06A2473FD9B00E66F59 /* Utilties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E656C0692473FD9B00E66F59 /* Utilties.swift */; };
@@ -30,6 +32,8 @@
 		481F0688BB8B424BD28E2116 /* Pods_Twitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Twitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48C81CCD4CAACF871C9F406D /* Pods-Twitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twitter.release.xcconfig"; path = "Target Support Files/Pods-Twitter/Pods-Twitter.release.xcconfig"; sourceTree = "<group>"; };
 		B9CC78999ED9A32BAD4956A5 /* Pods-Twitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twitter.debug.xcconfig"; path = "Target Support Files/Pods-Twitter/Pods-Twitter.debug.xcconfig"; sourceTree = "<group>"; };
+		E60621072478D43D00854C53 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		E60621092478D72F00854C53 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E656C06324739D6400E66F59 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		E656C0672473F95300E66F59 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		E656C0692473FD9B00E66F59 /* Utilties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilties.swift; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				E65B47F624754F9100667AA4 /* AuthService.swift */,
+				E60621072478D43D00854C53 /* UserService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -175,6 +180,7 @@
 		E6DDC4E72472DAB60009CFF2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E60621092478D72F00854C53 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -294,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E60621082478D43D00854C53 /* UserService.swift in Sources */,
 				E6DDC4CF2472DA360009CFF2 /* AppDelegate.swift in Sources */,
 				E6DDC4ED2472DC650009CFF2 /* ExploreController.swift in Sources */,
 				E6DDC4E92472DB320009CFF2 /* MainTabController.swift in Sources */,
@@ -301,6 +308,7 @@
 				E656C06424739D6400E66F59 /* LoginController.swift in Sources */,
 				E656C06A2473FD9B00E66F59 /* Utilties.swift in Sources */,
 				E65B47F724754F9100667AA4 /* AuthService.swift in Sources */,
+				E606210A2478D72F00854C53 /* User.swift in Sources */,
 				E6DDC4D12472DA360009CFF2 /* SceneDelegate.swift in Sources */,
 				E6DDC4F12472DC840009CFF2 /* NotificationsController.swift in Sources */,
 				E6DDC4EF2472DC750009CFF2 /* ConversationsController.swift in Sources */,
