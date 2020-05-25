@@ -26,6 +26,8 @@ class ExploreController: UIViewController {
     view.backgroundColor = .white
     
     navigationItem.title = "Explore"
+    
+    
   }
 }
 

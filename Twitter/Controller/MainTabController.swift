@@ -43,7 +43,8 @@ class MainTabController: UITabBarController {
   // MARK: - API
   
   func fetchUser() {
-    UserService.shared.fetchUser { user in
+    guard let uid = Auth.auth().currentUser?.uid else { return }
+    UserService.shared.fetchUser(uid: uid) { user in
       self.user = user
     }
   }
@@ -93,7 +94,7 @@ class MainTabController: UITabBarController {
   
   func configureViewControllers() {
     
-    let feed = FeedController()
+    let feed = FeedController(collectionViewLayout: UICollectionViewFlowLayout())
     let nav1 = templeateNavigationController(image:  UIImage(named: "home_unselected"), rootController: feed)
     
     let explore  = ExploreController()
